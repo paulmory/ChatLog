@@ -18,4 +18,4 @@ public class ChatCommand extends DeityCommandHandler  {
 		// TODO Auto-generated method stub
 		
 	}
-}
+}//Dependencies
