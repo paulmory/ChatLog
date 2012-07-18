@@ -22,4 +22,8 @@ public class ChatLog extends JavaPlugin {
 		DeityAPI.plugin.chat.out("[ChatLog] is disabled.");
 		config.saveConfig();
 	}
+	
+	private void setupDatabase() {
+		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL"+");");
+	}
 }
