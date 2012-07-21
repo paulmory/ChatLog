@@ -1,29 +1,55 @@
 package com.github.mbonachea.ChatLog;
 
-import org.bukkit.plugin.java.JavaPlugin;
-
 import com.imdeity.deityapi.DeityAPI;
+import com.imdeity.deityapi.api.DeityPlugin;
+import com.github.mbonachea.ChatLog.ChatListener;
+import com.github.mbonachea.ChatLog.commands.CmdHandler;
 
-public class ChatLog extends JavaPlugin {
+public class ChatLog extends DeityPlugin {
 
-	public ChatListener chat = new ChatListener(this);
-	public ChatConfig config = new ChatConfig(this);
-
-	
-
-	public void onEnable() {
-		DeityAPI.plugin.chat.out("[ChatLog] is enabled.");
-		getServer().getPluginManager().registerEvents(chat, this);
-
-		config.setUpConfig();
+	@Override
+	protected void initCmds() {
+		this.registerCommand(new CmdHandler("ChatLog"));
+		
 	}
 
-	public void onDisable() {
-		DeityAPI.plugin.chat.out("[ChatLog] is disabled.");
-		config.saveConfig();
+	@Override
+	protected void initConfig() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	private void setupDatabase() {
-		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL"+");");
+
+	@Override
+	protected void initDatabase() {
+		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL"+"`chat` VARCHAR(28) NOT NULL"+");");
+	}
+
+	@Override
+	protected void initInternalDatamembers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void initLanguage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void initListeners() {
+		this.registerListener(new ChatListener());
+	}
+
+	@Override
+	protected void initPlugin() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void initTasks() {
+		// TODO Auto-generated method stub
+		
 	}
 }

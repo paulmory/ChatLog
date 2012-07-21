@@ -1,7 +1,6 @@
 package com.github.mbonachea.ChatLog.commands;
 
 import com.github.mbonachea.ChatLog.ChatLog;
-import com.imdeity.deityapi.DeityAPI;
 import com.imdeity.deityapi.api.DeityCommandHandler;
 
 public class CmdHandler extends DeityCommandHandler  {
