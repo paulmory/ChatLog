@@ -7,10 +7,11 @@ import com.github.mbonachea.ChatLog.commands.CmdHandler;
 
 public class ChatLog extends DeityPlugin {
 	public static ChatLog plugin = null;
+	
 
 	@Override
 	protected void initCmds() {
-		this.registerCommand(new CmdHandler("ChatLog", "chatlog"));
+		this.registerCommand(new CmdHandler("ChatLog"));
 		
 	}
 

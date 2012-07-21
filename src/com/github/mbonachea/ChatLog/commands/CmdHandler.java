@@ -1,10 +1,13 @@
 package com.github.mbonachea.ChatLog.commands;
 
+import com.github.mbonachea.ChatLog.ChatLog;
 import com.imdeity.deityapi.api.DeityCommandHandler;
 
 public class CmdHandler extends DeityCommandHandler  {
-	public CmdHandler(String ChatLog, String chatlog) {
-		super("ChatLog", "chatlog");
+	private  ChatLog plugin;
+	
+	public CmdHandler(String plugin) {
+		super(plugin, "ChatLog");
 	}
 
 	@Override

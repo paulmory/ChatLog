@@ -3,3 +3,6 @@ main: com.github.mbonachea.ChatLog.ChatLog
 name: ChatLog
 authors: [cliff777, mbonachea]
 version: 0.1
+commands:
+  chatlog:
+    description: Looks up chat history of a player in a specified time
