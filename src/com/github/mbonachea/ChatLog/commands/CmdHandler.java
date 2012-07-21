@@ -12,6 +12,6 @@ public class CmdHandler extends DeityCommandHandler  {
 
 	@Override
 	protected void initRegisteredCommands() {
-		this.registerCommand("search", "[player] <time>", "Looks up chat history of a player in a specified time", new SearchCmd(), "chatlog.lookup");
+		this.registerCommand("search", "[player] <time>", "Looks up chat history of a player in a specified time", new SearchCmd(), "chatlog.search");
 	}
 }
