@@ -6,10 +6,11 @@ import com.github.mbonachea.ChatLog.ChatListener;
 import com.github.mbonachea.ChatLog.commands.CmdHandler;
 
 public class ChatLog extends DeityPlugin {
+	public static ChatLog plugin = null;
 
 	@Override
 	protected void initCmds() {
-		this.registerCommand(new CmdHandler("ChatLog"));
+		this.registerCommand(new CmdHandler("ChatLog", "chatlog"));
 		
 	}
 
@@ -21,7 +22,7 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initDatabase() {
-		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL"+"`chat` VARCHAR(28) NOT NULL"+");");
+		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL, "+"`chat` VARCHAR(16) NOT NULL"+");");
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initPlugin() {
-		// TODO Auto-generated method stub
+		plugin = this; 
 		
 	}
 
