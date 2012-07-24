@@ -14,6 +14,7 @@ public class ChatListener extends DeityListener {
 	public void onPlayerChat(PlayerChatEvent event) {
 		player = event.getPlayer();
 		String chat = event.getMessage();
-		DeityAPI.getAPI().getDataAPI().getMySQL().write("insert into `chat_log` (`player_name`, `chat`) values ('" + player.getName() + "', '" + chat + "');");
+		String sql = ("insert into `chat_log` (`player_name`, `chat`) values (?, ?)");
+		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, player, chat);
 	}
 }
