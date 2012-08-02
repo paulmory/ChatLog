@@ -1,12 +1,15 @@
-package com.github.mbonachea.ChatLog;
+package com.github.mbonachea.chatlog;
 
+
+
+
+import com.github.mbonachea.chatlog.cmd.CmdHandler;
+import com.github.mbonachea.chatlog.listeners.ChatListener;
 import com.imdeity.deityapi.DeityAPI;
 import com.imdeity.deityapi.api.DeityPlugin;
-import com.github.mbonachea.ChatLog.ChatListener;
-import com.github.mbonachea.ChatLog.commands.CmdHandler;
 
 public class ChatLog extends DeityPlugin {
-	public static ChatLog plugin = null;
+	public static ChatLog plugin;
 	
 
 	@Override
@@ -17,13 +20,12 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initConfig() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void initDatabase() {
-		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` ("+"`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,"+"`player_name` VARCHAR(16) NOT NULL, "+"`chat` VARCHAR(16) NOT NULL"+");");
+		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` (`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,`player_name` VARCHAR(16) NOT NULL, `chat` VARCHAR(256) NOT NULL, `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)");
 	}
 
 	@Override
@@ -53,5 +55,9 @@ public class ChatLog extends DeityPlugin {
 	protected void initTasks() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void out(String out) {
+		getLogger().info(out);
 	}
 }

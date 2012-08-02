@@ -1,8 +1,7 @@
-main: com.github.mbonachea.ChatLog.ChatLog
-
 name: ChatLog
+main: com.github.mbonachea.chatlog.ChatLog
 authors: [cliff777, mbonachea]
-version: 0.1
+version: 1.0
 depend: [DeityAPI]
 commands:
   chatlog:
