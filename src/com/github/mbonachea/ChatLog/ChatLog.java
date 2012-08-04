@@ -1,10 +1,10 @@
-package com.github.mbonachea.chatlog;
+package com.github.mbonachea.ChatLog;
 
 
 
 
-import com.github.mbonachea.chatlog.cmd.CmdHandler;
-import com.github.mbonachea.chatlog.listeners.ChatListener;
+import com.github.mbonachea.ChatLog.commands.CmdHandler;
+import com.github.mbonachea.ChatLog.listeners.ChatListener;
 import com.imdeity.deityapi.DeityAPI;
 import com.imdeity.deityapi.api.DeityPlugin;
 

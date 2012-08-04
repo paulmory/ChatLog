@@ -1,4 +1,4 @@
-package com.github.mbonachea.chatlog.listeners;
+package com.github.mbonachea.ChatLog.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
