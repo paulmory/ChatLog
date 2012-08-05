@@ -1,4 +1,4 @@
-package com.github.mbonachea.ChatLog.listeners;
+package com.github.mbonachea.chatlog.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +16,7 @@ public class ChatListener extends DeityListener {
 		player = event.getPlayer();
 		String chat = event.getMessage();
 		String sql = ("insert into `chat_log` (`player_name`, `chat`, `time`) values (?, ?, NOW())");
-		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, player, chat);
+		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, player.getName(), chat);
+		//DeityAPI.getAPI().getDataAPI().getMySQL().write(sql);
 	}
 }

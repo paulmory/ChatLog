@@ -1,4 +1,4 @@
-package com.github.mbonachea.ChatLog;
+package com.github.mbonachea.chatlog;
 
 import java.sql.SQLDataException;
 
