@@ -20,7 +20,7 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initConfig() {
-		
+	
 	}
 
 	@Override
@@ -55,9 +55,5 @@ public class ChatLog extends DeityPlugin {
 	protected void initTasks() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public void out(String out) {
-		getLogger().info(out);
 	}
 }
