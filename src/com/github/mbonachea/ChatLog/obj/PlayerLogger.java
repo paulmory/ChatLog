@@ -1,4 +1,4 @@
-package com.github.mbonachea.ChatLog.obj;
+package com.github.mbonachea.chatlog.obj;
 
 import org.bukkit.entity.Player;
 

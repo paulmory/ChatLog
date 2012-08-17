@@ -2,7 +2,7 @@ package com.github.mbonachea.chatlog.cmd;
 
 import org.bukkit.entity.Player;
 
-import com.github.mbonachea.chatlog.Database;
+import com.github.mbonachea.chatlog.obj.Database;
 import com.imdeity.deityapi.api.DeityCommandReceiver;
 
 
@@ -41,7 +41,6 @@ public class SearchCmd extends DeityCommandReceiver {
 
 	@Override
 	public boolean onPlayerRunCommand(Player player, String[] args) {
-		System.out.println("cool");
 		if(!(args.length == 3)) {
 			return false;
 		}
