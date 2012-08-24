@@ -1,8 +1,0 @@
-name: ChatLog
-main: com.github.mbonachea.chatlog.ChatLog
-authors: [cliff777, mbonachea]
-version: 1.0
-depend: [DeityAPI]
-commands:
-  chatlog:
-    description: Looks up chat history of a player in a specified time

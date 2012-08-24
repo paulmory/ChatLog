@@ -65,7 +65,8 @@ public class Database {
 		}
 	}
 	
-	public static void getChatByConsole(String target, int time, String unit) {
-		
+	public static void purgeDatabase() {
+		String sql = "TRUNCATE TABLE `chat_log`";
+		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben params
 	}
 }
