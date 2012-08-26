@@ -8,32 +8,45 @@ import com.imdeity.deityapi.api.DeityCommandReceiver;
 
 public class SearchCmd extends DeityCommandReceiver {
 	static int time;
+	static String type;
 	static String chat;
 	static String name;
 	static String unit;
 
 	@Override
 	public boolean onConsoleRunCommand(String[] args) {
-		if(!(args.length == 3)) {
+		if(!(args.length == 4)) {
 			return false;
 		}
-		if(!isInt(args[1])){
+		if(!isInt(args[2])){
 			return false;
 		}
 
-		name = args[0];
-		time = Integer.parseInt(args[1]);
-		unit = args[2];
+		type = args[0];
+		name = args[1];
+		time = Integer.parseInt(args[2]);
+		unit = args[3];
 		
-		
-		if(unit.equalsIgnoreCase("s")){
-			Database.getChat(name, "[console]", time * 1000, "s");
-		}else if(unit.equalsIgnoreCase("m")){
-			Database.getChat(name, "[console]", time * 60 * 1000, "m");
-		}else if(unit.equalsIgnoreCase("h")){
-			Database.getChat(name, "[console]", time * 60 * 60 * 1000, "h");
-		}else{
-			return false;
+		if(type.equalsIgnoreCase("chat")) {
+			if(unit.equalsIgnoreCase("s")){
+				Database.getChat(name, "[console]", time * 1000, "s");
+			}else if(unit.equalsIgnoreCase("m")){
+				Database.getChat(name, "[console]", time * 60 * 1000, "m");
+			}else if(unit.equalsIgnoreCase("h")){
+				Database.getChat(name, "[console]", time * 60 * 60 * 1000, "h");
+			}else{
+				return false;
+			}
+		} else if(type.equalsIgnoreCase("command")) {
+			if(unit.equalsIgnoreCase("s")){
+				Database.getChat(name, "[console]", time * 1000, "s");
+			}else if(unit.equalsIgnoreCase("m")){
+				Database.getChat(name, "[console]", time * 60 * 1000, "m");
+			}else if(unit.equalsIgnoreCase("h")){
+				Database.getChat(name, "[console]", time * 60 * 60 * 1000, "h");
+			}else{
+				return false;
+			}
 		}
 		
 		return true;
@@ -41,26 +54,38 @@ public class SearchCmd extends DeityCommandReceiver {
 
 	@Override
 	public boolean onPlayerRunCommand(Player player, String[] args) {
-		if(!(args.length == 3)) {
+		if(!(args.length == 4)) {
 			return false;
 		}
-		if(!isInt(args[1])){
+		if(!isInt(args[2])){
 			return false;
 		}
 
-		name = args[0];
-		time = Integer.parseInt(args[1]);
-		unit = args[2];
+		type = args[0];
+		name = args[1];
+		time = Integer.parseInt(args[2]);
+		unit = args[3];
 		
-		
-		if(unit.equalsIgnoreCase("s")){
-			Database.getChat(name, player.getName(), time, "s");
-		}else if(unit.equalsIgnoreCase("m")){
-			Database.getChat(name, player.getName(), time * 60, "m");
-		}else if(unit.equalsIgnoreCase("h")){
-			Database.getChat(name, player.getName(), time * 60 * 60, "h");
-		}else{
-			return false;
+		if(type.equalsIgnoreCase("chat")) {
+			if(unit.equalsIgnoreCase("s")){
+				Database.getChat(name, "[console]", time * 1000, "s");
+			}else if(unit.equalsIgnoreCase("m")){
+				Database.getChat(name, "[console]", time * 60 * 1000, "m");
+			}else if(unit.equalsIgnoreCase("h")){
+				Database.getChat(name, "[console]", time * 60 * 60 * 1000, "h");
+			}else{
+				return false;
+			}
+		} else if(type.equalsIgnoreCase("command")) {
+			if(unit.equalsIgnoreCase("s")){
+				Database.getChat(name, "[console]", time * 1000, "s");
+			}else if(unit.equalsIgnoreCase("m")){
+				Database.getChat(name, "[console]", time * 60 * 1000, "m");
+			}else if(unit.equalsIgnoreCase("h")){
+				Database.getChat(name, "[console]", time * 60 * 60 * 1000, "h");
+			}else{
+				return false;
+			}
 		}
 		
 		return true;

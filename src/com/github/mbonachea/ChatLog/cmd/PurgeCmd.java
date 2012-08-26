@@ -1,5 +1,6 @@
 package com.github.mbonachea.chatlog.cmd;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import com.github.mbonachea.chatlog.obj.Database;
@@ -18,7 +19,7 @@ public class PurgeCmd extends DeityCommandReceiver {
 	@Override
 	public boolean onPlayerRunCommand(Player arg0, String[] arg1) {
 		Database.purgeDatabase();
-		DeityAPI.getAPI().getChatAPI().sendPlayerError(arg0, "ChatLog", "Chat database sucessfully purged!");
+		DeityAPI.getAPI().getChatAPI().sendPlayerMessage(arg0, "ChatLog", ChatColor.RED + "Chat database sucessfully purged!");
 		DeityAPI.getAPI().getChatAPI().outSevere("ChatLog", "Chat database sucessfully purged!");
 		return false;
 	}

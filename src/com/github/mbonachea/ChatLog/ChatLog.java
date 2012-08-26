@@ -20,12 +20,14 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initConfig() {
-	
+		this.config.addDefaultConfigValue("log_chat", true);
+		this.config.addDefaultConfigValue("log_commands", true);
 	}
 
 	@Override
 	protected void initDatabase() {
 		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `chat_log` (`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,`player_name` VARCHAR(16) NOT NULL, `chat` VARCHAR(256) NOT NULL, `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+		DeityAPI.getAPI().getDataAPI().getMySQL().write("CREATE TABLE IF NOT EXISTS `command_log` (`id` INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY ,`player_name` VARCHAR(16) NOT NULL, `command` VARCHAR(256) NOT NULL, `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)");
 	}
 
 	@Override
