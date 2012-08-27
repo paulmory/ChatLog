@@ -115,6 +115,7 @@ public class Database {
 	
 	public static void purgeDatabase() {
 		String sql = "TRUNCATE TABLE `chat_log`";
-		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben params
+		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben for params
+		DeityAPI.plugin.config.set("last-purge", System.currentTimeMillis());
 	}
 }

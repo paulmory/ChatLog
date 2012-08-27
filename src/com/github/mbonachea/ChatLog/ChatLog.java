@@ -5,6 +5,7 @@ package com.github.mbonachea.chatlog;
 
 import com.github.mbonachea.chatlog.cmd.CmdHandler;
 import com.github.mbonachea.chatlog.listeners.ChatListener;
+import com.github.mbonachea.chatlog.obj.Database;
 import com.imdeity.deityapi.DeityAPI;
 import com.imdeity.deityapi.api.DeityPlugin;
 
@@ -20,8 +21,10 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initConfig() {
-		this.config.addDefaultConfigValue("log_chat", true);
-		this.config.addDefaultConfigValue("log_commands", true);
+		this.config.addDefaultConfigValue("log-chat", true);
+		this.config.addDefaultConfigValue("log-commands", true);
+		this.config.addDefaultConfigValue("database-auto-purge-days", 30);
+		this.config.addDefaultConfigValue("last-purge", System.currentTimeMillis());
 	}
 
 	@Override
@@ -32,8 +35,9 @@ public class ChatLog extends DeityPlugin {
 
 	@Override
 	protected void initInternalDatamembers() {
-		// TODO Auto-generated method stub
-		
+		if(System.currentTimeMillis() - this.config.getLong("last-purge") > (this.config.getLong("database-auto-purge-days") * 24 * 60 * 60 * 1000)) {
+			Database.purgeDatabase();
+		}
 	}
 
 	@Override
