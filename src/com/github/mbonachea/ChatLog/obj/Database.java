@@ -1,6 +1,7 @@
 package com.github.mbonachea.chatlog.obj;
 
 import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.util.Date;
 
 import org.bukkit.Bukkit;
@@ -114,8 +115,22 @@ public class Database {
 	}
 	
 	public static void purgeDatabase() {
-		String sql = "TRUNCATE TABLE `chat_log`";
-		DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben for params
-		DeityAPI.plugin.config.set("last-purge", System.currentTimeMillis());
+		try {
+			String sql3 = "SELECT * FROM `chat_log`";
+			DatabaseResults query = DeityAPI.getAPI().getDataAPI().getMySQL().readEnhanced(sql3, new Object[0]);
+			if(query.hasRows() && query != null) {
+				int time = query.getInteger(0, "time");
+				long now = System.currentTimeMillis();
+				if((DeityAPI.plugin.config.getInt("purge-since-days") * 24 * 60 * 60 * 1000) - now > time) {
+					String sql = "TRUNCATE TABLE `chat_log`";
+					String sql2 = "TRUNCATE TABLE `command_log`";
+					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben for params
+					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql2, new Object[0]);//Credit again
+					DeityAPI.plugin.config.set("last-purge", System.currentTimeMillis());
+				}
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

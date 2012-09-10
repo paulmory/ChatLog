@@ -24,6 +24,7 @@ public class ChatLog extends DeityPlugin {
 		this.config.addDefaultConfigValue("log-chat", true);
 		this.config.addDefaultConfigValue("log-commands", true);
 		this.config.addDefaultConfigValue("database-auto-purge-days", 30);
+		this.config.addDefaultConfigValue("purge-since-days", 7);
 		this.config.addDefaultConfigValue("last-purge", System.currentTimeMillis());
 	}
 
