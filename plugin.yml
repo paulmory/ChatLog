@@ -1,7 +1,7 @@
 name: ChatLog
 main: com.github.mbonachea.chatlog.ChatLog
 authors: [cliff777, mbonachea]
-version: 1.4
+version: 1.4.1
 depend: [DeityAPI]
 website: http://dev.bukkit.org/server-mods/chatlog2/
 commands:

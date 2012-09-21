@@ -11,7 +11,7 @@ public class CmdHandler extends DeityCommandHandler  {
 
 	@Override
 	protected void initRegisteredCommands() {
-		this.registerCommand("search", null, "[type] [player] [time] [s/m/h]" +
+		this.registerCommand("search", null, "[chat/command] [player] [time] [s/m/h]" +
 				"", "Searches a user's chat history", new SearchCmd(), "ChatLog.search");
 		this.registerCommand("purge", null, "", "Purges the chat database", new PurgeCmd(), "ChatLog.purge");
 		this.registerCommand("logchat", null, "[true/false]", "Sets whether or not to log chat", new LogChatCmd(), "ChatLog.logchat");

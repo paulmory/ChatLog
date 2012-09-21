@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
 import com.imdeity.deityapi.DeityAPI;
 import com.imdeity.deityapi.records.DatabaseResults;
 
@@ -63,6 +65,12 @@ public class Database {
 					}
 				}
 			}
+		} else {
+			if(sender.equalsIgnoreCase("[console]")) {
+				DeityAPI.getAPI().getChatAPI().outWarn("ChatLog", "No chat!");
+			} else {
+				DeityAPI.getAPI().getChatAPI().sendPlayerError(Bukkit.getPlayer(sender), "ChatLog", "No chat!");
+			}
 		}
 	}
 	
@@ -111,10 +119,16 @@ public class Database {
 					}
 				}
 			}
+		} else {
+			if(sender.equalsIgnoreCase("[console]")) {
+				DeityAPI.getAPI().getChatAPI().outWarn("ChatLog", "No commands!");
+			} else {
+				DeityAPI.getAPI().getChatAPI().sendPlayerError(Bukkit.getPlayer(sender), "ChatLog", "No commands!");
+			}
 		}
 	}
 	
-	public static boolean purgeDatabase() {
+	public static void purgeDatabase(Player sender) {
 		try {
 			String sql3 = "SELECT * FROM `chat_log`";
 			DatabaseResults query = DeityAPI.getAPI().getDataAPI().getMySQL().readEnhanced(sql3, new Object[0]);
@@ -127,14 +141,19 @@ public class Database {
 					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben for params
 					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql2, new Object[0]);//Credit again
 					DeityAPI.plugin.config.set("last-purge", System.currentTimeMillis());
-					return true;
+					DeityAPI.getAPI().getChatAPI().sendPlayerError(sender, "ChatLog", "Database sucessfully purged!");
+					if(sender == null) {
+						DeityAPI.getAPI().getChatAPI().outSevere("ChatLog", "Database sucessfully purged!");
+					}
 				}
 			} else {
-				return false;
+				DeityAPI.getAPI().getChatAPI().sendPlayerError(sender, "ChatLog", "Database purge unsuccessful!");
+				if(sender == null) {
+					DeityAPI.getAPI().getChatAPI().outWarn("ChatLog", "Database purge unsuccessful!");
+				}
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return true;
 	}
 }

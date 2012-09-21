@@ -29,10 +29,11 @@ public class LogChatCmd extends DeityCommandReceiver {
 				DeityAPI.getAPI().getChatAPI().out("ChatLog", "log_chat set to false");
 				return true;
 			}
-		} else {
+		} else if(value == null) {
 			DeityAPI.getAPI().getChatAPI().outWarn("ChatLog", "You must specify true or false");
 			return true;
 		}
+		return true;
 	}
 
 	@Override
@@ -56,10 +57,11 @@ public class LogChatCmd extends DeityCommandReceiver {
 				DeityAPI.getAPI().getChatAPI().sendPlayerMessage(player, "ChatLog", ChatColor.YELLOW + "log_chat set to false");
 				return true;
 			}
-		} else {
+		} else if(value == null){
 			DeityAPI.getAPI().getChatAPI().sendPlayerError(player, "ChatLog", "You must specify true or false");
 			return true;
 		}
+		return true;
 	}
 
 }

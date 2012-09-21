@@ -1,8 +1,5 @@
 package com.github.mbonachea.chatlog;
 
-
-
-
 import com.github.mbonachea.chatlog.cmd.CmdHandler;
 import com.github.mbonachea.chatlog.listeners.ChatListener;
 import com.github.mbonachea.chatlog.obj.Database;
@@ -37,7 +34,7 @@ public class ChatLog extends DeityPlugin {
 	@Override
 	protected void initInternalDatamembers() {
 		if(System.currentTimeMillis() - this.config.getLong("last-purge") > (this.config.getLong("database-auto-purge-days") * 24 * 60 * 60 * 1000)) {
-			Database.purgeDatabase();
+			Database.purgeDatabase(null);
 		}
 	}
 
