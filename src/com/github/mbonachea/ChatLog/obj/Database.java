@@ -114,7 +114,7 @@ public class Database {
 		}
 	}
 	
-	public static void purgeDatabase() {
+	public static boolean purgeDatabase() {
 		try {
 			String sql3 = "SELECT * FROM `chat_log`";
 			DatabaseResults query = DeityAPI.getAPI().getDataAPI().getMySQL().readEnhanced(sql3, new Object[0]);
@@ -127,10 +127,14 @@ public class Database {
 					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql, new Object[0]);//Credit to vanZeben for params
 					DeityAPI.getAPI().getDataAPI().getMySQL().write(sql2, new Object[0]);//Credit again
 					DeityAPI.plugin.config.set("last-purge", System.currentTimeMillis());
+					return true;
 				}
+			} else {
+				return false;
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		return true;
 	}
 }

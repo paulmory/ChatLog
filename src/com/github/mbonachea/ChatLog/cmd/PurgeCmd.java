@@ -19,8 +19,13 @@ public class PurgeCmd extends DeityCommandReceiver {
 	@Override
 	public boolean onPlayerRunCommand(Player arg0, String[] arg1) {
 		Database.purgeDatabase();
-		DeityAPI.getAPI().getChatAPI().sendPlayerMessage(arg0, "ChatLog", ChatColor.RED + "Chat database sucessfully purged!");
-		DeityAPI.getAPI().getChatAPI().outSevere("ChatLog", "Chat database sucessfully purged!");
+		if(Database.purgeDatabase() == true) {
+			DeityAPI.getAPI().getChatAPI().sendPlayerMessage(arg0, "ChatLog", ChatColor.RED + "Database sucessfully purged!");
+			DeityAPI.getAPI().getChatAPI().outSevere("ChatLog", "Database sucessfully purged!");
+		} else {
+			DeityAPI.getAPI().getChatAPI().sendPlayerError(arg0, "ChatLog", "Database purge unsuccessful!");
+			DeityAPI.getAPI().getChatAPI().outWarn("ChatLog", "Database purge unsuccessful!");
+		}
 		return false;
 	}
 
